@@ -17,36 +17,36 @@ summary(efi) #análisis descriptivo
 
 #Boxplots y búsqueda de outliers
 par(mfrow = c(1,2) )
-boxplot(Yheating, horizontal = T)
+boxplot(Yheating,main= "Yheating", horizontal = T)
 stripchart(Yheating, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(Ycooling, horizontal = T)
+boxplot(Ycooling,main= "Ycooling", horizontal = T)
 stripchart(Ycooling, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
 par(mar = c(2, 1, 1, 2))
 par(mfrow = c(4,2) )
-boxplot(relcomp, horizontal = T)
+boxplot(relcomp,main= "relative compactness", horizontal = T)
 stripchart(relcomp, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(surf, horizontal = T)
+boxplot(surf, main= "surface area", horizontal = T)
 stripchart(surf, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(wall, horizontal = T)
+boxplot(wall,main= "wall area", horizontal = T)
 stripchart(wall, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(roof, horizontal = T)
+boxplot(roof, main= "roof area", horizontal = T)
 stripchart(roof, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(height, horizontal = T)
+boxplot(height, main= "overall height", horizontal = T)
 stripchart(height, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(orient, horizontal = T)
+boxplot(orient, main= "orientation", horizontal = T)
 stripchart(orient, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(glazing, horizontal = T)
+boxplot(glazing,main= "glazing", horizontal = T)
 stripchart(glazing, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
-boxplot(gladist, horizontal = T)
+boxplot(gladist,main= "glazing distribution", horizontal = T)
 stripchart(gladist, method = "jitter", pch = 20, add = TRUE, col = "turquoise")
 
 par(mfrow = c(1,1) )
@@ -95,3 +95,9 @@ summary(mh)
 vif(mh)
 #Vif=3.79, menor a 10, se ignora
 
+
+m<-lm(Yheating~height+surf+wall)
+summary(m)
+
+m<-lm(Yheating~relcomp+roof+surf+height+glazing+gladist+wall)
+summary(m)
